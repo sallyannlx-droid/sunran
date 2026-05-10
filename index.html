@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1410">
+  <meta property="og:title" content="冉冉海棠 · 二〇二五 · 海南">
+  <meta property="og:description" content="日子缓缓 爱意渐浓">
+  <title>冉冉海棠 · 二〇二五 · 海南</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:     #1a1410;
+      --charcoal:#2d2420;
+      --cream:   #f7f3ed;
+      --pale:    #fdfbf7;
+      --sand:    #e8ddd0;
+      --tea:     #6b4e3d;
+      --gold:    #a08050;
+      --mid:     #8a7a6a;
+      --rose:    #b08070;
+      --shadow:  rgba(26,20,16,0.06);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    html { scroll-behavior:smooth; }
+    body {
+      background: var(--pale);
+      color: var(--ink);
+      font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.8;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100svh;
+      background: var(--ink);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 36px 100px;
+      position: relative; overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; border-radius: 50%;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(160,128,80,.10) 0%, transparent 70%);
+      top:45%; left:50%; transform:translate(-50%,-50%);
+      pointer-events:none;
+    }
+    .cover::after {
+      content: '棠';
+      font-family: 'Ma Shan Zheng', serif;
+      font-size: 520px; line-height: 1;
+      color: rgba(255,255,255,.018);
+      position: absolute; top:50%; left:50%;
+      transform: translate(-50%,-52%);
+      pointer-events:none; user-select:none;
+    }
+    .cover-seal {
+      width:64px; height:64px;
+      border:1px solid rgba(160,128,80,.4);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 32px; position:relative; z-index:2;
+      animation: fadeUp 1.6s ease both;
+    }
+    .cover-seal span {
+      font-family:'Ma Shan Zheng',serif;
+      font-size:26px; color:rgba(160,128,80,.6);
+    }
+    .cover-rule {
+      width:1px; height:40px;
+      background:linear-gradient(to bottom, rgba(160,128,80,.4), transparent);
+      margin:0 auto 32px; position:relative; z-index:2;
+      animation: fadeUp 1.6s .2s ease both;
+    }
+    .cover-title {
+      font-family:'Ma Shan Zheng',serif;
+      font-size: clamp(52px,14vw,78px);
+      color:#ede4d4; letter-spacing:.12em; line-height:1.15;
+      position:relative; z-index:2;
+      animation: fadeUp 1.6s .35s ease both;
+    }
+    .cover-sub {
+      margin-top:28px;
+      font-size:clamp(11px,3vw,14px);
+      color:rgba(237,228,212,.5); letter-spacing:.4em;
+      position:relative; z-index:2;
+      animation: fadeUp 1.6s .55s ease both;
+    }
+    .cover-sub i { margin:0 10px; opacity:.3; font-style:normal; }
+    .cover-date {
+      margin-top:18px;
+      font-size:clamp(10px,2.6vw,12px);
+      color:rgba(160,128,80,.5); letter-spacing:.5em;
+      position:relative; z-index:2;
+      animation: fadeUp 1.6s .75s ease both;
+    }
+    .cover-credit {
+      margin-top:52px; padding-top:20px;
+      border-top:1px solid rgba(160,128,80,.15);
+      font-size:10px; color:rgba(160,128,80,.35);
+      letter-spacing:.35em; position:relative; z-index:2;
+      animation: fadeUp 1.6s .95s ease both;
+    }
+    .cover-scroll {
+      position:absolute; bottom:32px; left:50%;
+      transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      z-index:2; animation: fadeUp 2s 1.4s ease both;
+    }
+    .cover-scroll span { font-size:9px; color:rgba(160,128,80,.3); letter-spacing:.5em; }
+    .cover-scroll-line {
+      width:1px; height:32px;
+      background:linear-gradient(to bottom, rgba(160,128,80,.4), transparent);
+      animation:pulse 3s infinite;
+    }
+
+    /* ── POEM ── */
+    .poem-section { 
+      padding:80px 36px 64px; 
+      text-align:center; 
+      background:var(--pale); 
+      position:relative;
+    }
+    .poem-section::before {
+      content: '';
+      position:absolute; top:40px; left:50%; transform:translateX(-50%);
+      width:1px; height:24px;
+      background:linear-gradient(to bottom, rgba(160,128,80,.3), transparent);
+    }
+    .poem-text {
+      font-size:clamp(13px,3.5vw,16px);
+      color:var(--mid); line-height:2.8; letter-spacing:.2em;
+      font-weight:200;
+    }
+    .poem-text br { display:block; margin-bottom:0.3em; }
+
+    /* ── CHAPTER ── */
+    .chapter { padding-bottom:80px; }
+    .chapter-header { padding:64px 32px 40px; text-align:center; }
+    .ch-num { 
+      display:block; 
+      font-size:9px; 
+      letter-spacing:.6em; 
+      color:var(--rose); 
+      margin-bottom:16px; 
+      text-transform:uppercase;
+      font-weight:400;
+    }
+    .ch-title { 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:clamp(28px,7.5vw,40px); 
+      color:var(--ink); 
+      letter-spacing:.08em; 
+      line-height:1.3;
+    }
+    .ch-desc { 
+      margin-top:14px; 
+      font-size:clamp(11px,3vw,13px); 
+      color:var(--mid); 
+      letter-spacing:.22em; 
+      line-height:2.2;
+      font-weight:200;
+    }
+
+    /* ── PHOTO LAYOUTS ── */
+    .photo-bleed { padding:0; }
+    .photo-bleed img { 
+      width:100%; display:block; 
+      aspect-ratio:4/5; object-fit:cover;
+    }
+    .photo-bleed-wide img { 
+      width:100%; display:block; 
+      aspect-ratio:16/10; object-fit:cover;
+    }
+    .photo-margin { padding:0 20px; }
+    .photo-margin img { 
+      width:100%; display:block; 
+      aspect-ratio:3/4; object-fit:cover;
+      border-radius:2px;
+    }
+
+    .photo-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+    .photo-grid-2 img { 
+      width:100%; display:block; 
+      aspect-ratio:3/4; object-fit:cover;
+    }
+
+    .photo-overlay { position:relative; padding:0 20px; }
+    .photo-overlay img { 
+      width:100%; display:block; 
+      aspect-ratio:3/4; object-fit:cover;
+      border-radius:2px;
+    }
+    .photo-overlay .ov-caption {
+      position:absolute; bottom:0; left:20px; right:20px;
+      background:linear-gradient(transparent, rgba(26,20,16,.6));
+      padding:40px 24px 20px;
+      color:rgba(247,243,237,.85);
+      font-size:12px; letter-spacing:.18em; line-height:2;
+      font-weight:200;
+    }
+
+    .polaroid-solo { padding:0 40px; }
+    .polaroid-row { display:flex; gap:14px; padding:0 20px; }
+    .polaroid {
+      background:#fff; 
+      padding:10px 10px 32px;
+      box-shadow:0 2px 20px rgba(0,0,0,.06);
+      flex:1;
+    }
+    .polaroid img { 
+      width:100%; display:block; 
+      aspect-ratio:4/5; object-fit:cover;
+    }
+    .polaroid-solo .polaroid img { aspect-ratio:3/4; }
+    .p-label { 
+      text-align:center; 
+      padding-top:12px; 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:14px; 
+      color:var(--ink); 
+      letter-spacing:.1em;
+    }
+
+    .caption { 
+      text-align:center; 
+      padding:20px 32px; 
+      font-size:clamp(11px,2.8vw,12.5px); 
+      color:var(--mid); 
+      letter-spacing:.2em; 
+      line-height:2.4;
+      font-weight:200;
+    }
+    .caption-sm { 
+      font-size:10px; 
+      color:rgba(138,122,106,.5); 
+      letter-spacing:.3em; 
+      display:block;
+      margin-top:4px;
+    }
+
+    .sp { height:16px; }
+    .sp-lg { height:32px; }
+
+    /* ── DIVIDER ── */
+    .divider { 
+      display:flex; align-items:center; gap:16px; 
+      padding:20px 40px 24px; 
+    }
+    .div-line { 
+      flex:1; height:1px; 
+      background:linear-gradient(to right, transparent, rgba(160,128,80,.25), transparent); 
+    }
+    .div-icon { 
+      font-size:14px; 
+      color:rgba(160,128,80,.3); 
+      line-height:1;
+      font-family:'Ma Shan Zheng',serif;
+    }
+
+    /* ── TEA INTERLUDE ── */
+    .tea-interlude {
+      background:var(--ink); 
+      padding:100px 36px 88px;
+      text-align:center; 
+      position:relative; 
+      overflow:hidden;
+    }
+    .tea-interlude::before {
+      content:'茶'; 
+      font-family:'Ma Shan Zheng',serif;
+      font-size:400px; 
+      color:rgba(255,255,255,.02);
+      position:absolute; 
+      top:50%; left:50%; 
+      transform:translate(-50%,-52%);
+      pointer-events:none; user-select:none;
+    }
+    .tea-rule { 
+      width:28px; height:1px; 
+      background:rgba(160,128,80,.4); 
+      margin:0 auto 36px; 
+    }
+    .tea-heading { 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:clamp(28px,7.5vw,42px); 
+      color:#ede4d4; 
+      letter-spacing:.12em; 
+      line-height:1.6; 
+      position:relative; z-index:1;
+    }
+    .tea-body { 
+      margin-top:36px; 
+      font-size:clamp(12px,3.2vw,14px); 
+      color:rgba(237,228,212,.5); 
+      line-height:2.8; 
+      letter-spacing:.2em; 
+      position:relative; z-index:1;
+      font-weight:200;
+    }
+    .tea-divider { 
+      margin:40px auto; 
+      width:1px; height:48px; 
+      background:linear-gradient(to bottom, rgba(160,128,80,.35), transparent); 
+    }
+    .tea-highlight { 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:clamp(18px,5vw,24px); 
+      color:rgba(160,128,80,.7); 
+      letter-spacing:.15em; 
+      position:relative; z-index:1;
+    }
+    .tea-tag { 
+      display:inline-block; 
+      margin:6px 6px; 
+      padding:5px 16px; 
+      border:1px solid rgba(160,128,80,.2); 
+      font-size:10px; 
+      color:rgba(160,128,80,.45); 
+      letter-spacing:.3em;
+    }
+    .tea-brand-block { 
+      margin-top:52px; 
+      padding-top:36px; 
+      border-top:1px solid rgba(160,128,80,.12); 
+      position:relative; z-index:1;
+    }
+    .tea-brand-name { 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:20px; 
+      color:rgba(160,128,80,.7); 
+      letter-spacing:.18em; 
+    }
+    .tea-brand-sub { 
+      margin-top:10px; 
+      font-size:9.5px; 
+      color:rgba(160,128,80,.3); 
+      letter-spacing:.35em;
+      line-height:2;
+    }
+
+    /* ── BRAND FOOTER ── */
+    .brand-footer { 
+      background:var(--cream); 
+      padding:72px 32px 88px; 
+      text-align:center; 
+    }
+    .bf-label { 
+      font-size:9.5px; 
+      letter-spacing:.55em; 
+      color:var(--mid); 
+      margin-bottom:36px; 
+      display:block; 
+      text-transform:uppercase;
+    }
+    .qr-frame { 
+      display:inline-block; 
+      padding:14px; 
+      border:1px solid rgba(107,78,61,.15); 
+      margin-bottom:32px; 
+      background:#fff;
+    }
+    .qr-frame img { 
+      width:140px; height:140px; 
+      display:block; 
+    }
+    .bf-name { 
+      font-family:'Ma Shan Zheng',serif; 
+      font-size:28px; 
+      color:var(--ink); 
+      letter-spacing:.12em; 
+      margin-bottom:8px; 
+    }
+    .bf-title { 
+      font-size:10.5px; 
+      color:var(--mid); 
+      letter-spacing:.3em; 
+      line-height:2.4;
+      font-weight:200;
+    }
+    .bf-phone { 
+      font-size:18px; 
+      color:var(--tea); 
+      letter-spacing:.18em; 
+      margin-top:14px;
+    }
+    .bf-tagline { 
+      margin-top:44px; 
+      padding-top:32px; 
+      border-top:1px solid rgba(107,78,61,.1); 
+      font-size:10px; 
+      color:rgba(107,78,61,.35); 
+      letter-spacing:.3em; 
+      line-height:3;
+      font-weight:200;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { 
+      from{opacity:0; transform:translateY(28px)} 
+      to{opacity:1; transform:translateY(0)} 
+    }
+    @keyframes pulse { 
+      0%,100%{opacity:.3} 50%{opacity:.7} 
+    }
+    .fi { 
+      opacity:0; transform:translateY(24px); 
+      transition:opacity 1s cubic-bezier(.25,.46,.45,.94), transform 1s cubic-bezier(.25,.46,.45,.94); 
+    }
+    .fi.v { opacity:1; transform:translateY(0); }
+    .fi.d1 { transition-delay:.12s; }
+    .fi.d2 { transition-delay:.24s; }
+    .fi.d3 { transition-delay:.36s; }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-seal"><span>礼</span></div>
+  <div class="cover-rule"></div>
+  <h1 class="cover-title">冉冉海棠</h1>
+  <p class="cover-sub">日子缓缓<i>·</i>爱意渐浓<i>·</i>小花盛开</p>
+  <p class="cover-date">二〇二五 &nbsp;·&nbsp; 海南</p>
+  <p class="cover-credit">茶艺师 &nbsp;林熙&nbsp; 特别定制 &nbsp;·&nbsp; 礼安茶学出品</p>
+  <div class="cover-scroll">
+    <span>翻阅</span>
+    <div class="cover-scroll-line"></div>
+  </div>
+</section>
+
+<!-- POEM -->
+<section class="poem-section fi">
+  <p class="poem-text">
+    海风吹来，棕榈轻摇<br>
+    七个人，一片海<br>
+    日子在这里，慢了下来<br>
+    笑声落在沙滩上<br>
+    被阳光收进贝壳里<br>
+    等到某天，轻轻打开<br>
+    还能听见，那时的风
+  </p>
+</section>
+
+<!-- CH1 全家团圆 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter One</span>
+    <h2 class="ch-title">全家 · 团圆</h2>
+    <p class="ch-desc">七个人，一片海，这就是家</p>
+  </div>
+  <div class="photo-bleed-wide fi">
+    <img src="images/family_all_sitting.jpg" alt="全家福" loading="lazy">
+  </div>
+  <p class="caption fi">坐在一起，便是最深的缘</p>
+  <div class="sp"></div>
+  <div class="photo-grid-2 fi">
+    <img src="images/family_all_standing.jpg" alt="全家福站立" loading="lazy">
+    <img src="images/family_three_pose.jpg" alt="一家三口" loading="lazy">
+  </div>
+  <p class="caption fi">三代同堂，血脉相连<br><span class="caption-sm">一家人的笑，是最好的风水</span></p>
+</section>
+
+<div class="divider fi"><div class="div-line"></div><div class="div-icon">棠</div><div class="div-line"></div></div>
+
+<!-- CH2 棠果儿 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter Two</span>
+    <h2 class="ch-title">棠果儿 · 小花盛开</h2>
+    <p class="ch-desc">你来了，春天就不走了</p>
+  </div>
+  <div class="polaroid-solo fi">
+    <div class="polaroid">
+      <img src="images/tangguoer_flower.jpg" alt="棠果儿花间" loading="lazy">
+      <p class="p-label">花间精灵</p>
+    </div>
+  </div>
+  <div class="sp-lg"></div>
+  <div class="polaroid-row fi">
+    <div class="polaroid">
+      <img src="images/tangguoer_run.jpg" alt="棠果儿奔跑" loading="lazy">
+      <p class="p-label">奔跑吧</p>
+    </div>
+    <div class="polaroid">
+      <img src="images/tangguoer_icecream.jpg" alt="棠果儿吃冰淇淋" loading="lazy">
+      <p class="p-label">纯真年代</p>
+    </div>
+  </div>
+  <p class="caption fi d2">每一个瞬间，都值得被记住</p>
+</section>
+
+<div class="divider fi"><div class="div-line"></div><div class="div-icon">棠</div><div class="div-line"></div></div>
+
+<!-- CH3 三口之家 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter Three</span>
+    <h2 class="ch-title">三口之家 · 欢笑如风</h2>
+    <p class="ch-desc">快乐，是他们最好的模样</p>
+  </div>
+  <div class="photo-bleed fi">
+    <img src="images/trio_fly.jpg" alt="一家三口飞翔" loading="lazy">
+  </div>
+  <p class="caption fi">飞吧，棠果儿<br><span class="caption-sm">爸爸妈妈接着你</span></p>
+  <div class="sp"></div>
+  <div class="photo-grid-2 fi">
+    <img src="images/trio_palms.jpg" alt="一家三口椰林" loading="lazy">
+    <img src="images/trio_grass.jpg" alt="一家三口草地" loading="lazy">
+  </div>
+  <div class="sp"></div>
+  <div class="photo-overlay fi">
+    <img src="images/mother_daughter_play.jpg" alt="母女嬉戏" loading="lazy">
+    <div class="ov-caption">翻涌的快乐，停不下来</div>
+  </div>
+  <div class="sp"></div>
+  <div class="photo-overlay fi">
+    <img src="images/trio_beach.jpg" alt="一家三口海边" loading="lazy">
+    <div class="ov-caption">椰林之间，家的味道</div>
+  </div>
+</section>
+
+<div class="divider fi"><div class="div-line"></div><div class="div-icon">棠</div><div class="div-line"></div></div>
+
+<!-- CH4 祖孙情 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter Four</span>
+    <h2 class="ch-title">祖孙情 · 掌心温柔</h2>
+    <p class="ch-desc">冉冉最软的心，都给了这个小人儿</p>
+  </div>
+  <div class="photo-bleed fi">
+    <img src="images/grandma_tangguoer.jpg" alt="奶奶和棠果儿" loading="lazy">
+  </div>
+  <p class="caption fi">花丛中的拥抱<br><span class="caption-sm">眼神里，全是宝贝</span></p>
+  <div class="sp"></div>
+  <div class="photo-overlay fi">
+    <img src="images/mother_daughter_beach.jpg" alt="母女海边" loading="lazy">
+    <div class="ov-caption">海边的风，吹乱了头发</div>
+  </div>
+  <div class="sp"></div>
+  <div class="photo-bleed fi">
+    <img src="images/father_daughter_beach.jpg" alt="父女海边" loading="lazy">
+  </div>
+  <p class="caption fi">一大一小，牵着走<br><span class="caption-sm">父女情深 · 海边漫步</span></p>
+</section>
+
+<div class="divider fi"><div class="div-line"></div><div class="div-icon">棠</div><div class="div-line"></div></div>
+
+<!-- CH5 冉冉芳华 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter Five</span>
+    <h2 class="ch-title">冉冉 · 芳华正好</h2>
+    <p class="ch-desc">她站在那里，便是最好的风景</p>
+  </div>
+  <div class="photo-overlay fi">
+    <img src="images/sunran_palm_lean.jpg" alt="孙冉椰树" loading="lazy">
+    <div class="ov-caption">椰树下的她，优雅从容</div>
+  </div>
+  <div class="sp"></div>
+  <div class="photo-grid-2 fi">
+    <img src="images/sunran_palm_sit.jpg" alt="孙冉椰树坐" loading="lazy">
+    <img src="images/sunran_beach_pose.jpg" alt="孙冉海边" loading="lazy">
+  </div>
+  <p class="caption fi">岁月静好，自在如风</p>
+  <div class="sp"></div>
+  <div class="polaroid-solo fi">
+    <div class="polaroid">
+      <img src="images/sunran_shells.jpg" alt="孙冉拾贝" loading="lazy">
+      <p class="p-label">拾贝时光</p>
+    </div>
+  </div>
+  <div class="sp-lg"></div>
+  <div class="photo-overlay fi">
+    <img src="images/sunran_flowers.jpg" alt="孙冉花间" loading="lazy">
+    <div class="ov-caption">三角梅下，花开正好</div>
+  </div>
+  <div class="sp"></div>
+  <div class="photo-grid-2 fi">
+    <img src="images/sunran_garden_walk.jpg" alt="孙冉漫步" loading="lazy">
+    <img src="images/sunran_beach_open.jpg" alt="孙冉海边张开" loading="lazy">
+  </div>
+</section>
+
+<div class="divider fi"><div class="div-line"></div><div class="div-icon">棠</div><div class="div-line"></div></div>
+
+<!-- CH6 相守 -->
+<section class="chapter">
+  <div class="chapter-header fi">
+    <span class="ch-num">Chapter Six</span>
+    <h2 class="ch-title">相守 · 爱意渐浓</h2>
+    <p class="ch-desc">走过了这么多年，还是只想牵你的手</p>
+  </div>
+  <div class="photo-bleed fi">
+    <img src="images/couple_walk.jpg" alt="夫妻漫步" loading="lazy">
+  </div>
+  <p class="caption fi">椰林漫步，手牵着手<br><span class="caption-sm">不说话，也好</span></p>
+  <div class="sp"></div>
+  <div class="photo-overlay fi">
+    <img src="images/mother_son_close.jpg" alt="母子合影" loading="lazy">
+    <div class="ov-caption">母子连心，幸福定格</div>
+  </div>
+  <div class="sp"></div>
+  <div class="photo-grid-2 fi">
+    <img src="images/mother_son_selfie.jpg" alt="母子自拍" loading="lazy">
+    <img src="images/family_three_selfie.jpg" alt="一家三口自拍" loading="lazy">
+  </div>
+  <p class="caption fi">椰林深处，一家相依</p>
+  <div class="sp"></div>
+  <div class="photo-overlay fi">
+    <img src="images/couple_stand.jpg" alt="夫妻合影" loading="lazy">
+    <div class="ov-caption">并肩而立，便是最好的时光</div>
+  </div>
+</section>
+
+<!-- TEA INTERLUDE -->
+<section class="tea-interlude">
+  <div class="tea-rule fi"></div>
+  <h2 class="tea-heading fi">以茶为礼<br>以心相赠</h2>
+  <p class="tea-body fi">
+    这份礼，来自云南的山间<br>
+    林熙寻茶十一年<br>
+    走过千山，只为遇见最好的一片叶子<br><br>
+    一盒茶，一段记忆<br>
+    当您触碰这枚芯片<br>
+    这段时光便在指尖重新流淌<br><br>
+    愿这份礼<br>
+    如好茶一般<br>
+    在岁月里，慢慢变好
+  </p>
+  <div class="tea-divider fi"></div>
+  <p class="tea-highlight fi">礼安茶学</p>
+  <div class="fi d1" style="margin-top:18px">
+    <span class="tea-tag">云南茶山直供</span>
+    <span class="tea-tag">一级茶艺技师</span>
+    <span class="tea-tag">文创茶礼定制</span>
+  </div>
+  <div class="tea-brand-block fi">
+    <p class="tea-brand-name">林熙茶录</p>
+    <p class="tea-brand-sub">林熙茶录文化传播有限公司<br>让每一份情谊，找到最好的礼</p>
+  </div>
+</section>
+
+<!-- BRAND FOOTER -->
+<section class="brand-footer">
+  <span class="bf-label fi">此礼 · 定制出品</span>
+  <div class="qr-frame fi">
+    <img src="images/qrcode.png" alt="林熙二维码">
+  </div>
+  <div class="fi d1">
+    <p class="bf-name">林熙</p>
+    <p class="bf-title">
+      茶艺师 · 茶叶评审一级技师<br>
+      礼安茶学创始人 · 林熙茶录
+    </p>
+    <p class="bf-phone">133 · 7879 · 5373</p>
+  </div>
+  <p class="bf-tagline fi">
+    云南茶山直供 · 文创茶礼定制<br>
+    培训 · 评审 · 全案品牌策划<br><br>
+    扫码联系 · 礼随心至
+  </p>
+</section>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add('v'); 
+        io.unobserve(e.target); 
+      } 
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
